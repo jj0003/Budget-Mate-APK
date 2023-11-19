@@ -1,40 +1,45 @@
 package com.janstudios.budgit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.janstudios.budgit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var transactions : ArrayList<Transaction>
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(Home())
 
-        transactions = arrayListOf(
-            Transaction("Pay", 400.00))
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_home -> replaceFragment(Home())
+                R.id.nav_add -> replaceFragment(AddTransaction())
+                R.id.nav_budget -> replaceFragment(Budget())
+                R.id.nav_transaction -> replaceFragment(Transaction())
 
+                else ->{
 
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    // Handle home navigation
-                    true
                 }
-                R.id.nav_savings -> {
-                    // Handle favorites navigation
-                    true
-                }
-                R.id.nav_wallet -> {
-                    // Handle search navigation
-                    true
-                }
-                else -> false
+
             }
+            true
         }
+
+
     }
 
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+
+    }
 
 
 }
