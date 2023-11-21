@@ -16,7 +16,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AddTransaction.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddTransaction : Fragment() {
+class AddTransaction() : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,6 +36,7 @@ class AddTransaction : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_transaction, container, false)
     }
+
 
     companion object {
         /**
