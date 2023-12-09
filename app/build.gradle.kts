@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs")
-
+    id("kotlin-kapt")
 }
 
 
@@ -46,6 +46,12 @@ android {
 }
 
 dependencies {
+
+
+    val room_version = "2.6.0"
+    implementation("androidx.room:room-runtime:$room_version")
+
+
 
     val nav_version = "2.7.5"
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")

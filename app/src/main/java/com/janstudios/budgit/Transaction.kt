@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.janstudios.budgit.databinding.FragmentTransactionBinding
 
@@ -23,10 +24,15 @@ class Transaction : Fragment() {
 
         transactionAdapter = TransactionAdapter(Database.database.transactionList)
 
-        binding.recyclerviewTransactionHistory.adapter = transactionAdapter
-        binding.recyclerviewTransactionHistory.layoutManager = LinearLayoutManager(context)
+        binding.recyclerviewTransactionHistory.apply {
+            adapter = transactionAdapter
+            layoutManager = LinearLayoutManager(context)
 
-        // Optionally, you can add ItemTouchHelper for swipe functionalities
+            // Swipe to delete functionality
+            val swipeToDeleteCallback = SwipeToDeleteCallback(transactionAdapter, Database.database.transactionList)
+            val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+            itemTouchHelper.attachToRecyclerView(this)
+        }
 
         return binding.root
     }

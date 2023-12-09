@@ -4,12 +4,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.janstudios.budgit.UserTransaction
 import com.janstudios.budgit.databinding.ListItemBinding
 
-class TransactionAdapter(private val transactionList: ArrayList<UserTransaction>) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapter(private var transactionList: List<UserTransaction>) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(userTransaction: UserTransaction) {
             binding.itemAmount.text = userTransaction.amount
-            binding.itemCategory.text = userTransaction.category
+            binding.itemCategory.text = userTransaction.label
         }
     }
 
