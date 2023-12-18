@@ -39,6 +39,6 @@ class Transaction : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // Nullify the binding to avoid memory leaks
+        _binding = null
     }
 }

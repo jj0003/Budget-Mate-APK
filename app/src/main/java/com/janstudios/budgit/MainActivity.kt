@@ -2,38 +2,27 @@ package com.janstudios.budgit
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.janstudios.budgit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Home())
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.frame_layout) as NavHostFragment
+        navController = navHostFragment.navController
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.nav_home -> replaceFragment(Home())
-                R.id.nav_add -> replaceFragment(AddTransaction())
-                R.id.nav_budget -> replaceFragment(Budget())
-                R.id.nav_transaction -> replaceFragment(Transaction())
+        val bottomNavigationView = binding.bottomNavigationView
+        setupWithNavController(bottomNavigationView, navController)
 
-                else ->{
-
-                }
-            }
-            true
-        }
     }
 
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.commit()
-    }
 }
