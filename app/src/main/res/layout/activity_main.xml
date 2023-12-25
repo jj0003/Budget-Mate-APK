@@ -6,20 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- NavHostFragment that will display the fragments<androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" /> -->
-
-
-    <!-- BottomNavigationView that displays the bottom bar items -->
+    <!-- FragmentContainerView to host the different fragments navigated via BottomNavigationView -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frame_layout"
         android:layout_width="0dp"
@@ -31,10 +18,9 @@
         app:defaultNavHost="true"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/nav_graph"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_home" />
 
-    </androidx.fragment.app.FragmentContainerView>
-
+    <!-- Bottom Navigation View for navigating across different sections of the app -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
@@ -45,9 +31,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_menu" /> <!-- Menu items for bottom navigation defined in a menu resource -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
