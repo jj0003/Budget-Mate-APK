@@ -1,0 +1,21 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.janstudios.budgit.fragments.Home"
+        android:label="Home" />
+    <fragment
+        android:id="@+id/addTransactionFragment"
+        android:name="com.janstudios.budgit.fragments.AddTransaction"
+        android:label="Add Transaction" />
+    <fragment
+        android:id="@+id/budgetFragment"
+        android:name="com.janstudios.budgit.fragments.Budget"
+        android:label="Budget" />
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.janstudios.budgit.fragments.Transaction"
+        android:label="Transaction" />
+</navigation>
