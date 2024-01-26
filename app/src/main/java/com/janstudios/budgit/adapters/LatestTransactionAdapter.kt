@@ -12,10 +12,12 @@ class LatestTransactionAdapter(private val transactions: List<UserTransaction>) 
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         // Bind transaction data to the UI elements in each list item
         fun bind(userTransaction: UserTransaction) {
-            binding.itemAmount.text = userTransaction.amount
+            "$ ${userTransaction.amount}".also { binding.itemAmount.text = it }
             binding.itemCategory.text = userTransaction.label
             binding.itemDate.text = userTransaction.date
         }
+
+
     }
 
     // Create new ViewHolder for each list item

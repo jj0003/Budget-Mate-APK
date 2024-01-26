@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.janstudios.budgit.adapters.TransactionAdapter
 import com.janstudios.budgit.animations.SwipeToDeleteCallback
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserTransaction
 import com.janstudios.budgit.databinding.FragmentTransactionBinding
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +21,7 @@ class Transaction : Fragment() {
 
     private var _binding: FragmentTransactionBinding? = null
     private val binding get() = _binding!!
-    private lateinit var db: SleepDatabase
+    private lateinit var db: BudgetDatabase
     private lateinit var transactionAdapter: TransactionAdapter
 
     // Inflate the layout and set up the fragment
@@ -29,7 +29,7 @@ class Transaction : Fragment() {
         _binding = FragmentTransactionBinding.inflate(inflater, container, false)
 
         // Initialize the database
-        db = SleepDatabase.getInstance(requireContext())
+        db = BudgetDatabase.getInstance(requireContext())
 
         // Load and display transactions
         loadTransactions()

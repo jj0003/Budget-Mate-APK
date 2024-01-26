@@ -8,12 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserTransaction
 import com.janstudios.budgit.databinding.FragmentAddTransactionBinding
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -24,14 +22,14 @@ class AddTransaction : Fragment() {
 
     private var _binding: FragmentAddTransactionBinding? = null
     private val binding get() = _binding!!
-    private lateinit var db: SleepDatabase
+    private lateinit var db: BudgetDatabase
 
     // Inflate the layout and set up the fragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddTransactionBinding.inflate(inflater, container, false)
 
         // Initialize the database
-        db = SleepDatabase.getInstance(requireContext())
+        db = BudgetDatabase.getInstance(requireContext())
 
         // Setup click listeners
         binding.addTransactionButton.setOnClickListener { addTransactionToDatabase() }
@@ -60,13 +58,9 @@ class AddTransaction : Fragment() {
     // Inserts the given transaction into the database and clears the input fields
     private fun insertTransactionIntoDatabase(transaction: UserTransaction) {
         lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                db.transactionDao().insert(transaction)
-            }
-            // Switch to the Main thread for UI updates
-            launch(Dispatchers.Main) {
-                clearInputFields()
-            }
+            db.transactionDao().insert(transaction)
+
+            clearInputFields()
         }
     }
 
@@ -95,6 +89,7 @@ class AddTransaction : Fragment() {
         }
     }
 
+    //TODO: ????
     /*
     // Updates the date in the input field after selecting from date picker
     private fun updateDateInView(calendar: Calendar, year: Int, month: Int, dayOfMonth: Int) {

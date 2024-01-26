@@ -7,13 +7,12 @@ buildscript {
     }
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
-        val nav_version = "2.7.5"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
     }
 }
 
 
 plugins {
-    id("com.android.application") version "8.2.0" apply false
+    id("com.android.application") version "8.1.4" apply false
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
 }

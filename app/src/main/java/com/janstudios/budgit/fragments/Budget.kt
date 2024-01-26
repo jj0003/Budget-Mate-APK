@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.janstudios.budgit.R
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserBudget
 import com.janstudios.budgit.databinding.FragmentBudgetBinding
 import kotlinx.coroutines.Dispatchers
@@ -19,14 +19,14 @@ import kotlinx.coroutines.withContext
 class Budget : Fragment() {
     private var _binding: FragmentBudgetBinding? = null
     private val binding get() = _binding!!
-    private lateinit var db: SleepDatabase
+    private lateinit var db: BudgetDatabase
 
     // Inflate the layout and set up the fragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentBudgetBinding.inflate(inflater, container, false)
 
         // Initialize the database
-        db = SleepDatabase.getInstance(requireContext())
+        db = BudgetDatabase.getInstance(requireContext())
 
         // Load necessary data and update UI
         setupFrequencyDropdown()
@@ -77,12 +77,11 @@ class Budget : Fragment() {
         insertBudgetIntoDatabase(budget)
     }
 
+    //TODO: LOOK AT CONTEXT
     // Inserts the given budget into the database and clears the input fields
     private fun insertBudgetIntoDatabase(budget: UserBudget) {
         lifecycleScope.launch {
-            withContext(Dispatchers.IO) {
-                db.budgetDao().insertBudget(budget)
-            }
+            db.budgetDao().insertBudget(budget)
             clearInputFields()
         }
     }

@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    lateinit var db: SleepDatabase
+    lateinit var db: BudgetDatabase
 
     // Called when the activity is starting
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +32,6 @@ class MainActivity : AppCompatActivity() {
 
     // Initialize the Room database
     private fun initializeDatabase() {
-        db = SleepDatabase.getInstance(this)
+        db = BudgetDatabase.getInstance(this)
     }
 }

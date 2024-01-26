@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.janstudios.budgit.adapters.LatestTransactionAdapter
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserBudget
 import com.janstudios.budgit.database.UserTransaction
 import com.janstudios.budgit.databinding.FragmentHomeBinding
@@ -21,14 +21,14 @@ class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var db: SleepDatabase
+    private lateinit var db: BudgetDatabase
 
     // Inflate the layout and set up the fragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         // Initialize the database
-        db = SleepDatabase.getInstance(requireContext())
+        db = BudgetDatabase.getInstance(requireContext())
 
         // Load necessary data and update UI
         loadLatestTransactions()
@@ -58,10 +58,10 @@ class Home : Fragment() {
     // Update UI for total balance
     private fun updateTotalBalanceUI(totalBalance: Double) {
         if (totalBalance < 0) {
-            binding.card1TotalBalance.text = "- $${-totalBalance}"
+            "- $${-totalBalance}".also { binding.card1TotalBalance.text = it }
             binding.card1TotalBalance.setTextColor(Color.RED)
         } else {
-            binding.card1TotalBalance.text = "$$totalBalance"
+            "$$totalBalance".also { binding.card1TotalBalance.text = it }
         }
     }
 
@@ -71,7 +71,7 @@ class Home : Fragment() {
             val totalExpenses = withContext(Dispatchers.IO) {
                 db.transactionDao().getAll().sumOf { it.amount.toDoubleOrNull() ?: 0.0 }
             }
-            binding.card2TotalExpenses.text = "- $${totalExpenses}"
+            "- $${totalExpenses}".also { binding.card2TotalExpenses.text = it }
             binding.card2TotalExpenses.setTextColor(Color.RED)
         }
     }
@@ -94,10 +94,10 @@ class Home : Fragment() {
     // Update UI for remaining budget
     private fun updateRemainingBudgetUI(remainingBudget: Double) {
         if (remainingBudget < 0) {
-            binding.card4RemainingBudget.text = "- $${-remainingBudget}"
+            "- $${-remainingBudget}".also { binding.card4RemainingBudget.text = it }
             binding.card4RemainingBudget.setTextColor(Color.RED)
         } else {
-            binding.card4RemainingBudget.text = "$$remainingBudget"
+            "$$remainingBudget".also { binding.card4RemainingBudget.text = it }
         }
     }
 
@@ -113,8 +113,8 @@ class Home : Fragment() {
 
     // Update UI with latest budget details
     private fun updateBudgetView(budget: UserBudget) {
-        binding.allocatedBudget.text = "$${budget.amountBudget}"
-        binding.card3Text.text = "${budget.frequency.uppercase()} BUDGET"
+        "$${budget.amountBudget}".also { binding.allocatedBudget.text = it }
+        "${budget.frequency.uppercase()} BUDGET".also { binding.card3Text.text = it }
     }
 
     // Load the latest transactions and update UI

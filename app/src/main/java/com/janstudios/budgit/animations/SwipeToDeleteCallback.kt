@@ -3,7 +3,7 @@ package com.janstudios.budgit.animations
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.janstudios.budgit.adapters.TransactionAdapter
-import com.janstudios.budgit.database.SleepDatabase
+import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserTransaction
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class SwipeToDeleteCallback(
     private val adapter: TransactionAdapter,
     private val transactionList: MutableList<UserTransaction>,
-    private val db: SleepDatabase,
+    private val db: BudgetDatabase,
     private val scope: CoroutineScope
 ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
