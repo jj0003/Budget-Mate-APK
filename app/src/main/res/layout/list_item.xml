@@ -33,7 +33,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                android:maxLines="1"/>
 
             <!-- TextView for Displaying Category -->
             <TextView
@@ -48,7 +48,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/item_amount"
                 app:layout_constraintRight_toLeftOf="@id/item_date"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:maxLines="1"/>
 
             <!-- TextView for Displaying Date -->
             <TextView
@@ -62,7 +63,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/item_category"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:maxLines="1"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
