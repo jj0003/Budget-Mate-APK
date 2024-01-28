@@ -77,14 +77,16 @@ class Budget : Fragment() {
         insertBudgetIntoDatabase(budget)
     }
 
-    //TODO: LOOK AT CONTEXT
     // Inserts the given budget into the database and clears the input fields
     private fun insertBudgetIntoDatabase(budget: UserBudget) {
-        lifecycleScope.launch {
+        lifecycleScope.launch(Dispatchers.IO) { // Switch to IO dispatcher for database operations
             db.budgetDao().insertBudget(budget)
-            clearInputFields()
+            withContext(Dispatchers.Main) { // Switch back to Main dispatcher to update UI
+                clearInputFields()
+            }
         }
     }
+
 
     // Deletes all budgets from the database
     private fun deleteAllBudgets() {
