@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragments.AddTransaction">
+    tools:context=".fragments.Budget">
 
     <!-- Root Layout: ConstraintLayout for flexible and efficient arrangement of child views -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +13,7 @@
         <FrameLayout
             android:id="@+id/transaction_title"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="75dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
@@ -93,6 +93,53 @@
             app:icon="@drawable/ic_hammer"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/input_amount" />
+
+
+
+        <!-- Card View for Transaction List -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/recyclerView_budget"
+            style="?attr/materialCardViewElevatedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/delete_budget_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp">
+
+            <!-- Vertical Layout for Transaction List Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Title for Transaction History -->
+                <TextView
+                    android:id="@+id/recyclerview_budget_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Budget History"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="6sp"
+                    android:autoSizeMaxTextSize="25sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <!-- RecyclerView for Displaying Transactions -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_budget_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/budget_list_item" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -89,19 +89,6 @@ class AddTransaction : Fragment() {
         }
     }
 
-    //TODO: ????
-    /*
-    // Updates the date in the input field after selecting from date picker
-    private fun updateDateInView(calendar: Calendar, year: Int, month: Int, dayOfMonth: Int) {
-        calendar.set(Calendar.YEAR, year)
-        calendar.set(Calendar.MONTH, month)
-        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-        val dateFormat = "yyyy-MM-dd"
-        val sdf = SimpleDateFormat(dateFormat, Locale.getDefault())
-        binding.inputDateEdit.setText(sdf.format(calendar.time))
-    }
-    */
-
     // Clean up binding when the view is destroyed
     override fun onDestroyView() {
         super.onDestroyView()

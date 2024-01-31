@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.janstudios.budgit.R
+import com.janstudios.budgit.adapters.BudgetAdapter
 import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.BudgetUpdateWorker
 import com.janstudios.budgit.database.UserBudget
@@ -21,9 +23,13 @@ class Budget : Fragment() {
     private var _binding: FragmentBudgetBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: BudgetDatabase
-
+    private lateinit var budgetAdapter: BudgetAdapter
     // Inflate the layout and set up the fragment
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentBudgetBinding.inflate(inflater, container, false)
 
         // Initialize the database
@@ -33,8 +39,27 @@ class Budget : Fragment() {
         setupFrequencyDropdown()
         setupAddBudgetButton()
         setupDeleteAllBudgetButton()
+        loadBudgets()
 
         return binding.root
+    }
+
+    private fun updateRecyclerView(budgets: MutableList<UserBudget>) {
+        budgetAdapter = BudgetAdapter(budgets)
+        binding.recyclerviewBudgetHistory.apply {
+            adapter = budgetAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    // Fetch and display all budgets from the database
+    private fun loadBudgets() {
+        lifecycleScope.launch {
+            val budgets = withContext(Dispatchers.IO) {
+                db.budgetDao().getAllBudgets().toMutableList()
+            }
+            updateRecyclerView(budgets)
+        }
     }
 
     // Setup frequency dropdown with predefined options

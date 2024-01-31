@@ -33,16 +33,13 @@ class TransactionAdapter(private val transactionList: MutableList<UserTransactio
     // Returns the size of the transaction list
     override fun getItemCount() = transactionList.size
 
-    //TODO: ????
-    // Method to update the transaction list
     fun updateTransactions(newTransactions: List<UserTransaction>) {
         transactionList.clear()
         transactionList.addAll(newTransactions)
         notifyDataSetChanged()
     }
 
-    //TODO: ????
-    // Method to remove an item from the transaction list
+
     fun removeItem(position: Int) {
         transactionList.removeAt(position)
         notifyItemRemoved(position)
