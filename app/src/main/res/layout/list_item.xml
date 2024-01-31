@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="10dp"
-    style="@style/Widget.Material3.CardView.Elevated">
+    android:layout_marginVertical="10dp">
 
     <!-- Constraint Layout Container for List Item -->
     <androidx.constraintlayout.widget.ConstraintLayout

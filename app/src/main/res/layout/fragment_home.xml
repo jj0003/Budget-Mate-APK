@@ -23,7 +23,6 @@
             <!-- First Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card1"
-                style="?attr/materialCardViewElevatedStyle"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_margin="8dp"
@@ -41,10 +40,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeMinTextSize="6sp"
-                        android:autoSizeStepGranularity="2sp"
-                        android:autoSizeTextType="uniform"
                         android:maxLines="1"
                         android:text="TOTAL BALANCE"
                         android:textSize="16sp" />
@@ -63,10 +58,6 @@
                             style="?attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeMaxTextSize="24sp"
-                            android:autoSizeMinTextSize="12sp"
-                            android:autoSizeStepGranularity="2sp"
-                            android:autoSizeTextType="uniform"
                             android:maxLines="1"
                             android:text="+ $150.34"
                             android:textSize="24sp" />
@@ -77,7 +68,6 @@
             <!-- Second Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card2"
-                style="?attr/materialCardViewElevatedStyle"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_margin="8dp"
@@ -95,10 +85,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeMinTextSize="6sp"
-                        android:autoSizeStepGranularity="2sp"
-                        android:autoSizeTextType="uniform"
                         android:maxLines="1"
                         android:text="EXPENSES"
                         android:textSize="16sp" />
@@ -112,15 +98,11 @@
                         android:orientation="horizontal">
 
                         <!-- MaterialButton for total expenses -->
-                        <com.google.android.material.button.MaterialButton
+                        <TextView
                             android:id="@+id/card2_total_expenses"
                             style="?attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeMaxTextSize="24sp"
-                            android:autoSizeMinTextSize="12sp"
-                            android:autoSizeStepGranularity="2sp"
-                            android:autoSizeTextType="uniform"
                             android:maxLines="1"
                             android:text="- $249.66"
                             android:textColor="@color/design_default_color_error"
@@ -140,7 +122,6 @@
             <!-- Third Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card3"
-                style="?attr/materialCardViewElevatedStyle"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_margin="8dp"
@@ -158,10 +139,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeMinTextSize="6sp"
-                        android:autoSizeStepGranularity="2sp"
-                        android:autoSizeTextType="uniform"
                         android:maxLines="1"
                         android:text="NO ALLOCATED BUDGET"
                         android:textSize="16sp" />
@@ -175,15 +152,11 @@
                         android:orientation="horizontal">
 
                         <!-- MaterialButton for allocated budget -->
-                        <com.google.android.material.button.MaterialButton
+                        <TextView
                             android:id="@+id/allocated_budget"
                             style="?attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeMaxTextSize="24sp"
-                            android:autoSizeMinTextSize="12sp"
-                            android:autoSizeStepGranularity="2sp"
-                            android:autoSizeTextType="uniform"
                             android:maxLines="1"
                             android:text="$0"
                             android:textSize="24sp" />
@@ -194,7 +167,6 @@
             <!-- Fourth Card -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card4"
-                style="?attr/materialCardViewElevatedStyle"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_margin="8dp"
@@ -211,10 +183,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeMinTextSize="6sp"
-                        android:autoSizeStepGranularity="2sp"
-                        android:autoSizeTextType="uniform"
                         android:maxLines="1"
                         android:text="REMAINING BUDGET"
                         android:textSize="16sp" />
@@ -228,15 +196,11 @@
                         android:orientation="horizontal">
 
                         <!-- MaterialButton for remaining budget -->
-                        <com.google.android.material.button.MaterialButton
+                        <TextView
                             android:id="@+id/card4_remaining_budget"
                             style="?attr/borderlessButtonStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeMaxTextSize="24sp"
-                            android:autoSizeMinTextSize="12sp"
-                            android:autoSizeStepGranularity="2sp"
-                            android:autoSizeTextType="uniform"
                             android:maxLines="1"
                             android:text="$156.66"
                             android:textSize="24sp" />
@@ -245,27 +209,40 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <!-- Title for Latest Transactions -->
-        <TextView
-            android:id="@+id/recyclerview_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:autoSizeMaxTextSize="16sp"
-            android:autoSizeMinTextSize="6sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:maxLines="1"
-            android:padding="10sp"
-            android:text="LATEST TRANSACTIONS"
-            android:textSize="16sp" />
-
-        <!-- RecyclerView for displaying the latest transactions -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_latest_transactions"
+        <!-- Card View for Transaction List -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/recyclerView_budget"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10sp"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp">
+
+            <!-- Vertical Layout for Transaction List Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Title for Transaction History -->
+                <TextView
+                    android:id="@+id/recyclerview_budget_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latest Transactions"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <!-- RecyclerView for Displaying Transactions -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_latest_transactions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/budget_list_item" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </FrameLayout>

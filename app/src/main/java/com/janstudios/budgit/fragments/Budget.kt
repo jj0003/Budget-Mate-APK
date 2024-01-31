@@ -78,6 +78,9 @@ class Budget : Fragment() {
     private fun setupAddBudgetButton() {
         binding.addBudgetButton.setOnClickListener {
             addBudgetToDatabase()
+            loadBudgets()
+            budgetAdapter.notifyDataSetChanged()
+
         }
     }
 
@@ -85,6 +88,8 @@ class Budget : Fragment() {
     private fun setupDeleteAllBudgetButton() {
         binding.deleteBudgetButton.setOnClickListener {
             deleteAllBudgets()
+            loadBudgets()
+            budgetAdapter.notifyDataSetChanged()
         }
     }
 

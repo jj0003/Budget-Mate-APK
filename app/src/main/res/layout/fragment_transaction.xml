@@ -13,7 +13,6 @@
         <!-- Card View for Transaction List -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/recycler_transaction"
-            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
