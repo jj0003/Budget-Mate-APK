@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.janstudios.budgit.R
 import com.janstudios.budgit.database.BudgetDatabase
+import com.janstudios.budgit.database.BudgetUpdateWorker
 import com.janstudios.budgit.database.UserBudget
 import com.janstudios.budgit.databinding.FragmentBudgetBinding
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,11 @@ class Budget : Fragment() {
         val items = arrayOf("Daily", "Weekly", "Fortnightly", "Monthly", "Yearly")
         val adapter = ArrayAdapter(requireContext(), R.layout.list_frequency, items)
         binding.autocompleteFrequency.setAdapter(adapter)
+
+        binding.autocompleteFrequency.setOnItemClickListener { _, _, position, _ ->
+            val selectedFrequency = items[position]
+            startBudgetUpdateWorker(selectedFrequency)
+        }
     }
 
     // Setup the Add Budget button with click listener
@@ -102,7 +108,10 @@ class Budget : Fragment() {
         binding.autocompleteFrequency.setText("")
         binding.inputAmount.editText?.setText("")
     }
-
+    // Start the BudgetUpdateWorker with the selected frequency
+    private fun startBudgetUpdateWorker(frequency: String) {
+        BudgetUpdateWorker.scheduleUpdate(requireContext(), frequency)
+    }
     // Clean up binding when the view is destroyed
     override fun onDestroyView() {
         super.onDestroyView()
