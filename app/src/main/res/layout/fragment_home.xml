@@ -22,9 +22,103 @@
 
             <!-- First Card -->
             <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Title TextView for Card 1 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:maxLines="1"
+                        android:text="G'DAY"
+                        android:textSize="20sp" />
+
+                    <!-- Container for displaying total balance -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!-- TextView for total balance -->
+                        <TextView
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="Jan"
+                            android:textColor="@color/material_dynamic_primary0"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Second Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Title TextView for Card 2 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:maxLines="1"
+                        android:text="Budget is..."
+                        android:textSize="20sp" />
+
+                    <!-- Container for displaying total expenses -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!-- MaterialButton for total expenses -->
+                        <TextView
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="Awesome"
+                            android:textSize="24sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- First Row of Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- First Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card1"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1">
 
@@ -69,7 +163,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card2"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1">
 
@@ -123,7 +217,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card3"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1">
 
@@ -168,7 +262,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card4"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1">
 
@@ -239,7 +333,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview_latest_transactions"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     tools:listitem="@layout/budget_list_item" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
