@@ -15,7 +15,9 @@ import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.BudgetUpdateWorker
 import com.janstudios.budgit.database.UserBudget
 import com.janstudios.budgit.databinding.FragmentBudgetBinding
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -78,9 +80,7 @@ class Budget : Fragment() {
     private fun setupAddBudgetButton() {
         binding.addBudgetButton.setOnClickListener {
             addBudgetToDatabase()
-            loadBudgets()
             budgetAdapter.notifyDataSetChanged()
-
         }
     }
 
@@ -88,7 +88,6 @@ class Budget : Fragment() {
     private fun setupDeleteAllBudgetButton() {
         binding.deleteBudgetButton.setOnClickListener {
             deleteAllBudgets()
-            loadBudgets()
             budgetAdapter.notifyDataSetChanged()
         }
     }
@@ -119,6 +118,7 @@ class Budget : Fragment() {
             db.budgetDao().insertBudget(budget)
             withContext(Dispatchers.Main) { // Switch back to Main dispatcher to update UI
                 clearInputFields()
+                loadBudgets()
             }
         }
     }
@@ -129,6 +129,7 @@ class Budget : Fragment() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 db.budgetDao().deleteAllBudget()
+                loadBudgets()
             }
         }
     }

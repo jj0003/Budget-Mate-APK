@@ -10,13 +10,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_container"
         android:layout_width="match_parent"
-        android:layout_height="75dp">
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
 
-        <!-- Linear Layout for Horizontally Aligning Text Views -->
+        <!-- TextView for Displaying "Category" Label -->
+        <TextView
+            android:id="@+id/item_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Linear Layout for Horizontally Aligning Text Views, Adjusted to Be Below Category Label -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:id="@+id/text_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_category">
 
             <!-- TextView for Displaying Amount -->
             <TextView
@@ -24,46 +44,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingStart="0dp"
-                android:paddingEnd="20dp"
+                android:maxLines="1"
                 android:text="$90,45"
-                android:textSize="17.5sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:maxLines="1"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Spacer View for pushing items to the sides -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <!-- TextView for Displaying Category -->
-            <TextView
-                android:id="@+id/item_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="Food"
-                android:textSize="17.5sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/item_amount"
-                app:layout_constraintRight_toLeftOf="@id/item_date"
-                app:layout_constraintTop_toTopOf="parent"
-                android:maxLines="1"/>
+
+
+            <!-- Spacer View for pushing items to the sides -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <!-- TextView for Displaying Date -->
             <TextView
                 android:id="@+id/item_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="0dp"
                 android:text="10.10.2023"
-                android:textSize="17.5sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/item_category"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:maxLines="1"/>
+                android:textSize="14sp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

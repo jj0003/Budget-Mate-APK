@@ -14,7 +14,7 @@ class BudgetAdapter(private val budgets: List<UserBudget>) : RecyclerView.Adapte
         fun bind(userBudget: UserBudget) {
             "$ ${userBudget.amountBudget}".also { binding.textAmount.text = it }
             binding.textFrequency.text = userBudget.frequency
-            binding.budgetDate.text = "Your Date Logic Here"
+            binding.budgetDate.text = "Date: Coming Soon"
         }
     }
 

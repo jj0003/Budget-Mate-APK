@@ -1,21 +1,49 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.janstudios.budgit.fragments.Home"
-        android:label="Home" />
+        android:label="Home"
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/addTransactionFragment"
         android:name="com.janstudios.budgit.fragments.AddTransaction"
-        android:label="Add Transaction" />
+        android:label="Transactions"
+        tools:layout="@layout/fragment_add_transaction">
+        <action
+            android:id="@+id/action_addTransactionFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/transactionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/budgetFragment"
         android:name="com.janstudios.budgit.fragments.Budget"
-        android:label="Budget" />
+        android:label="Budget"
+        tools:layout="@layout/fragment_budget"/>
     <fragment
         android:id="@+id/transactionFragment"
         android:name="com.janstudios.budgit.fragments.Transaction"
-        android:label="Transaction" />
+        android:label="Transaction"
+        tools:layout="@layout/fragment_transaction">
+        <action
+            android:id="@+id/action_transactionFragment_to_addTransactionFragment2"
+            app:destination="@id/addTransactionFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/addTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.janstudios.budgit.fragments.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

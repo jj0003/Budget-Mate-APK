@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.janstudios.budgit.R
 import com.janstudios.budgit.adapters.TransactionAdapter
 import com.janstudios.budgit.animations.SwipeToDeleteCallback
 import com.janstudios.budgit.database.BudgetDatabase
@@ -36,6 +38,8 @@ class Transaction : Fragment() {
         // Setup button for deleting all transactions
         setupDeleteAllTransactionsButton()
 
+        navigateToAddTransaction()
+
         return binding.root
     }
 
@@ -43,6 +47,13 @@ class Transaction : Fragment() {
     private fun setupDeleteAllTransactionsButton() {
         binding.deleteBudgetButton.setOnClickListener {
             deleteAllTransactions()
+        }
+    }
+
+
+    private fun navigateToAddTransaction() {
+        binding.addTransactionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_transactionFragment_to_addTransactionFragment2)
         }
     }
 

@@ -16,8 +16,6 @@ class LatestTransactionAdapter(private val transactions: List<UserTransaction>) 
             binding.itemCategory.text = userTransaction.label
             binding.itemDate.text = userTransaction.date
         }
-
-
     }
 
     // Create new ViewHolder for each list item
