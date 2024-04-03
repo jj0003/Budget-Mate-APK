@@ -13,7 +13,6 @@
         <!-- Card View for Transaction List -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/recycler_transaction"
-            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,6 +23,7 @@
 
             <!-- Vertical Layout for Transaction List Content -->
             <LinearLayout
+                android:id="@+id/transaction_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -61,7 +61,19 @@
             android:text="Delete All"
             app:icon="@drawable/ic_hammer"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"/>
 
+
+        <!-- Button to add the transaction -->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_transaction_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            app:icon="@drawable/ic_plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

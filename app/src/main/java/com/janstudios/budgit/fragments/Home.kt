@@ -121,7 +121,7 @@ class Home : Fragment() {
     private fun loadLatestTransactions() {
         lifecycleScope.launch {
             val latestTransactions = withContext(Dispatchers.IO) {
-                db.transactionDao().getAll().takeLast(3)
+                db.transactionDao().getLatestTransactions().takeLast(3)
             }
             updateRecyclerView(latestTransactions)
         }

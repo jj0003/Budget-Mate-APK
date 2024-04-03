@@ -20,8 +20,8 @@ interface TransactionDao {
     @Update
     suspend fun update(vararg transaction: UserTransaction)
 
-    @Query("SELECT * FROM transactions ORDER BY id DESC LIMIT 1")
-    fun getLatestTransactions(): UserTransaction?
+    @Query("SELECT * FROM transactions ORDER BY id ASC")
+    fun getLatestTransactions(): MutableList<UserTransaction>
 
     @Query("DELETE FROM transactions")
     suspend fun deleteAll()

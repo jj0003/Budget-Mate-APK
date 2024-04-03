@@ -7,8 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
 
-class BudgetUpdateWorker(
-    context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
+class BudgetUpdateWorker(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         // Your logic to update budgets based on frequency

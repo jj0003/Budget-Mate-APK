@@ -5,15 +5,15 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
     <item
-        android:id="@+id/addTransactionFragment"
-        android:icon="@drawable/ic_add"
-        android:title="Add Transaction" />
+        android:id="@+id/transactionFragment"
+        android:icon="@drawable/ic_bullet_list"
+        android:title="Transactions" />
     <item
         android:id="@+id/budgetFragment"
         android:icon="@drawable/ic_savings"
         android:title="Budget" />
     <item
-        android:id="@+id/transactionFragment"
-        android:icon="@drawable/ic_bullet"
-        android:title="Transactions" />
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_gear"
+        android:title="Settings"/>
 </menu>

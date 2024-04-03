@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.janstudios.budgit.R
 import com.janstudios.budgit.database.BudgetDatabase
 import com.janstudios.budgit.database.UserTransaction
 import com.janstudios.budgit.databinding.FragmentAddTransactionBinding
@@ -24,6 +26,7 @@ class AddTransaction : Fragment() {
     private val binding get() = _binding!!
     private lateinit var db: BudgetDatabase
 
+
     // Inflate the layout and set up the fragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddTransactionBinding.inflate(inflater, container, false)
@@ -34,6 +37,7 @@ class AddTransaction : Fragment() {
         // Setup click listeners
         binding.addTransactionButton.setOnClickListener { addTransactionToDatabase() }
         initializeDatePicker()
+        setupFrequencyDropdown()
 
         return binding.root
     }
@@ -89,18 +93,13 @@ class AddTransaction : Fragment() {
         }
     }
 
-    //TODO: ????
-    /*
-    // Updates the date in the input field after selecting from date picker
-    private fun updateDateInView(calendar: Calendar, year: Int, month: Int, dayOfMonth: Int) {
-        calendar.set(Calendar.YEAR, year)
-        calendar.set(Calendar.MONTH, month)
-        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-        val dateFormat = "yyyy-MM-dd"
-        val sdf = SimpleDateFormat(dateFormat, Locale.getDefault())
-        binding.inputDateEdit.setText(sdf.format(calendar.time))
+    // Setup frequency dropdown with predefined options
+    private fun setupFrequencyDropdown() {
+        val items = arrayOf("Weekly", "Monthly", "Yearly")
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_frequency, items)
+        binding.autocompleteFrequency.setAdapter(adapter)
     }
-    */
+
 
     // Clean up binding when the view is destroyed
     override fun onDestroyView() {

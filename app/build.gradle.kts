@@ -49,6 +49,7 @@ android {
 dependencies {
 
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.preference:preference:1.2.0")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.work:work-runtime:2.9.0")
