@@ -76,30 +76,43 @@ class Home : Fragment() {
         }
     }
 
-    // Calculate and display the remaining budget
+    // Calculate and display the remaining budget and update the progress bar
     private fun calculateAndDisplayRemainingBudget() {
         lifecycleScope.launch {
             val latestBudget = withContext(Dispatchers.IO) {
-                db.budgetDao().getLatestBudget()?.amountBudget ?: 0
+                db.budgetDao().getLatestBudget()?.amountBudget?.toDouble() ?: 0.0
             }
             val totalExpenses = withContext(Dispatchers.IO) {
                 db.transactionDao().getAll().sumOf { it.amount.toDoubleOrNull() ?: 0.0 }
             }
             val remainingBudget = latestBudget - totalExpenses
 
-            updateRemainingBudgetUI(remainingBudget)
+            // Calculate the percentage of the remaining budget
+            val budgetPercentage = if (latestBudget > 0.0) {
+                (remainingBudget / latestBudget * 100).coerceIn(0.0, 100.0)
+            } else {
+                0.0
+            }
+
+            // Update UI for remaining budget and progress bar
+            updateUI(remainingBudget, budgetPercentage)
         }
     }
 
-    // Update UI for remaining budget
-    private fun updateRemainingBudgetUI(remainingBudget: Double) {
+    // Update UI for remaining budget and progress bar
+    private fun updateUI(remainingBudget: Double, budgetPercentage: Double) {
+        // Update remaining budget text
         if (remainingBudget < 0) {
             "- $${-remainingBudget}".also { binding.card4RemainingBudget.text = it }
             binding.card4RemainingBudget.setTextColor(Color.RED)
         } else {
             "$$remainingBudget".also { binding.card4RemainingBudget.text = it }
         }
+
+        // Update the progress bar to reflect the remaining budget percentage
+        binding.remainingProgressIndicator.progress = budgetPercentage.toInt()
     }
+
 
     // Load the latest budget and update UI
     private fun loadLatestBudget() {

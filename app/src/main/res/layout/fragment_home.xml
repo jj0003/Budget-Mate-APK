@@ -154,7 +154,10 @@
                             android:maxLines="1"
                             android:text="+ $150.34"
                             android:textSize="24sp" />
+
+
                     </LinearLayout>
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -233,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:maxLines="1"
-                        android:text="NO ALLOCATED BUDGET"
+                        android:text="NOT ALLOCATED BUDGET"
                         android:textSize="16sp" />
 
                     <!-- Container for displaying allocated budget -->
@@ -298,6 +301,11 @@
                             android:text="$156.66"
                             android:textSize="24sp" />
                     </LinearLayout>
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/remaining_progress_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="false" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
