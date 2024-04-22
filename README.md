@@ -1,5 +1,7 @@
 # BudgetMate
 
+**CHANGE TO REACT NATIVE PROJECT COMING SOON!**
+
 **BudgetMate**: The Fully Open Source Budget App.
 
 BudgetMate is a sleek Android budgeting app built with Kotlin, targeting SDK API 24 (Nougat, Android 7.0). It simplifies tracking income and expenses, employing Material UI 3.0 Components for a user-friendly experience. Its minimalistic design makes financial management engaging and efficient.
